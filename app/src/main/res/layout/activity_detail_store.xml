@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="25dp"
+    tools:context="id.my.asmith.rizalapps.views.activity.DetailStore">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/produkInput"
+        android:visibility="visible"
+        android:padding="10dp">
+        <ImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/picProductUpdate"
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:src="@mipmap/ic_launcher"
+            android:layout_centerHorizontal="true" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/nameProductUpdate"
+            android:inputType="textPersonName"
+            android:imeOptions="actionNext"
+            android:layout_below="@+id/picProductUpdate"
+            android:hint="Name Product"/>
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/categoryProductUpdate"
+            android:background="#dfdfdf"
+            android:layout_below="@+id/nameProductUpdate"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/priceProductUpdate"
+            android:inputType="number"
+            android:imeOptions="actionNext"
+            android:layout_below="@+id/categoryProductUpdate"
+            android:hint="Price Product"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/aboutProductUpdate"
+            android:inputType="text"
+            android:imeOptions="actionDone"
+            android:layout_below="@+id/priceProductUpdate"
+            android:hint="About Product"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/aboutProductUpdate"
+            android:text="update product"
+            android:id="@+id/updateProduct"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/updateProduct"
+            android:id="@+id/deleteProduct"
+            android:text="Delete Product"/>
+    </RelativeLayout>
+
+</RelativeLayout>

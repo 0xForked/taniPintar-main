@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">RizalApps</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="full_name">Full Name</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="register">Register</string>
+    <string name="register_caption">Dont have an account? Register</string>
+    <string name="login">Login</string>
+    <string name="logout">Logout</string>
+    <string name="greeting">Hi, %s :)</string>
+    <string name="forgot_password">Forgot Password?</string>
+
+
+    <string name="error_message_min_pwd">Panjang password minimal 6 karakter</string>
+    <string name="error_message_mAuth_fail">Oops! gagal masuk pastikan email dan password benar, atau silahkan daftar akun baru!</string>
+    <string name="error_message_anon_notify">Oops! kami tidak dapat menampilkan data anda, apakah anda login sebagai anonimus ?</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="add_to_cart">add to cart</string>
+    <string name="my_profile">My Profile</string>
+    <string name="my_store">My Store</string>
+    <string name="information">Information</string>
+    <string name="about">About</string>
+    <string name="setting">Setting</string>
+    <string name="my_wishlist">My Wishlist</string>
+    <string name="text_full_name">Full Name</string>
+    <string name="text_date_of_birth">Date Of Birth</string>
+    <string name="text_phone_number">Phone Number</string>
+    <string name="text_place_of_birth">Place of Birth</string>
+    <string name="jadi_penjual">Jadi Penjual!</string>
+    <string name="search">search</string>
+</resources>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="id.my.asmith.rizalapps">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".views.activity.SplashScreen"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".views.activity.LoginActivity" />
+        <activity android:name=".views.activity.RegisterActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".views.activity.LoginActivity" />
+        </activity>
+        <activity
+            android:name=".views.activity.MainActivity"
+            android:label="@string/title_activity_main"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".views.activity.AboutActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".views.activity.MainActivity" />
+        </activity>
+        <activity android:name=".views.activity.InformationActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".views.activity.MainActivity" />
+        </activity>
+        <activity android:name=".views.activity.SettingActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".views.activity.MainActivity" />
+        </activity>
+        <activity android:name=".views.activity.CartActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".views.activity.MainActivity" />
+        </activity>
+        <activity android:name=".views.activity.WishlistActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".views.activity.MainActivity" />
+        </activity>
+        <activity android:name=".views.activity.StoreActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".views.activity.MainActivity" />
+        </activity>
+        <activity android:name=".views.activity.ProfileActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".views.activity.MainActivity" />
+        </activity>
+        <activity android:name=".views.activity.DetailStore">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".views.activity.StoreActivity" />
+        </activity>
+        <activity android:name=".views.activity.ListActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".views.activity.MainActivity" />
+        </activity>
+    </application>
+
+</manifest>

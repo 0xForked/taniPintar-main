@@ -1,0 +1,272 @@
+{
+  "project_info": {
+    "project_number": "387885706207",
+    "firebase_url": "https://asmith-lab.firebaseio.com",
+    "project_id": "asmith-lab",
+    "storage_bucket": "asmith-lab.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:387885706207:android:7663d840a1d32603",
+        "android_client_info": {
+          "package_name": "id.my.asmith.asmithlabs"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "387885706207-m3dnufrjggmvln9pt5cfhk9e6kbf2n8j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "id.my.asmith.asmithlabs",
+            "certificate_hash": "afe6410cabee47663f4a1766ff5e30a76735884e"
+          }
+        },
+        {
+          "client_id": "387885706207-asqftur6rvnic0cj6ucgo8g0t7uhdrh0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6gcixwocs7Dzu1y4sQKAzYyv9WIz9aXk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "387885706207-asqftur6rvnic0cj6ucgo8g0t7uhdrh0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:387885706207:android:30f2f3e7d3677a58",
+        "android_client_info": {
+          "package_name": "id.my.asmith.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "387885706207-asqftur6rvnic0cj6ucgo8g0t7uhdrh0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6gcixwocs7Dzu1y4sQKAzYyv9WIz9aXk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:387885706207:android:5e319ef9291f2dea",
+        "android_client_info": {
+          "package_name": "id.my.asmith.informatika"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "387885706207-asqftur6rvnic0cj6ucgo8g0t7uhdrh0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6gcixwocs7Dzu1y4sQKAzYyv9WIz9aXk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:387885706207:android:238fbb1153a8f86e",
+        "android_client_info": {
+          "package_name": "id.my.asmith.momasa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "387885706207-asqftur6rvnic0cj6ucgo8g0t7uhdrh0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6gcixwocs7Dzu1y4sQKAzYyv9WIz9aXk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:387885706207:android:47d2c23ca5be6235",
+        "android_client_info": {
+          "package_name": "id.my.asmith.fblogin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "387885706207-asqftur6rvnic0cj6ucgo8g0t7uhdrh0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6gcixwocs7Dzu1y4sQKAzYyv9WIz9aXk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:387885706207:android:6e6da57647ea71f3",
+        "android_client_info": {
+          "package_name": "id.my.asmith.kemek"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "387885706207-asqftur6rvnic0cj6ucgo8g0t7uhdrh0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6gcixwocs7Dzu1y4sQKAzYyv9WIz9aXk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:387885706207:android:c00e06a332c77ac1",
+        "android_client_info": {
+          "package_name": "id.my.asmith.accesspoint"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "387885706207-asqftur6rvnic0cj6ucgo8g0t7uhdrh0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6gcixwocs7Dzu1y4sQKAzYyv9WIz9aXk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:387885706207:android:5956966d38301f2a",
+        "android_client_info": {
+          "package_name": "id.my.asmith.rizalapps"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "387885706207-asqftur6rvnic0cj6ucgo8g0t7uhdrh0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6gcixwocs7Dzu1y4sQKAzYyv9WIz9aXk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
