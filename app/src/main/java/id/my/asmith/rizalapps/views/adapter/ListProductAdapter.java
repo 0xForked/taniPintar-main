@@ -18,7 +18,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import id.my.asmith.rizalapps.R;
 import id.my.asmith.rizalapps.model.PostProduct;
-import id.my.asmith.rizalapps.views.activity.DetailStore;
+import id.my.asmith.rizalapps.views.activity.DetailList;
 
 /**
  * Created by Asmith on 10/6/2017.
@@ -51,7 +51,8 @@ public class ListProductAdapter extends RecyclerView.Adapter<ListProductAdapter.
         holder.textViewHarga.setText(result.getHarga());
         holder.textViewKeterangan.setText(result.getKeterangan());
         holder.produkId.setText(String.valueOf(result.getProdukId()));
-
+        holder.userID.setText(result.getUid());
+        holder.imgurl.setText(result.getPic());
         Picasso.with(context)
                 .load(result.getPic())
                 .placeholder(R.mipmap.ic_launcher)
@@ -67,14 +68,14 @@ public class ListProductAdapter extends RecyclerView.Adapter<ListProductAdapter.
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        @BindView(R.id.textNama)
-        TextView textViewNama;
+        @BindView(R.id.textNama) TextView textViewNama;
         @BindView(R.id.textKategori) TextView textViewKategori;
         @BindView(R.id.textHarga) TextView textViewHarga;
         @BindView(R.id.textKeterangan) TextView textViewKeterangan;
         @BindView(R.id.produk_id) TextView produkId;
-        @BindView(R.id.imgProduk)
-        ImageView imgProducts;
+        @BindView(R.id.imgProduk) ImageView imgProducts;
+        @BindView(R.id.uid) TextView userID;
+        @BindView(R.id.imgrul) TextView imgurl;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -89,14 +90,17 @@ public class ListProductAdapter extends RecyclerView.Adapter<ListProductAdapter.
             String harga = textViewHarga.getText().toString();
             String keterangan = textViewKeterangan.getText().toString();
             String produkid = String.valueOf(produkId.getText());
+            String userid = userID.getText().toString();
+            String imguri = imgurl.getText().toString();
 
-
-            Intent i = new Intent(context, DetailStore.class);
+            Intent i = new Intent(context, DetailList.class);
             i.putExtra("produkid", produkid);
             i.putExtra("nama", nama);
             i.putExtra("kategori", kategori);
             i.putExtra("harga", harga);
             i.putExtra("keterangan", keterangan);
+            i.putExtra("userid", userid);
+            i.putExtra("img", imguri);
             context.startActivity(i);
         }
     }

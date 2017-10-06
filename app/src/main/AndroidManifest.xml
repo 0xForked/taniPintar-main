@@ -75,6 +75,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".views.activity.MainActivity" />
         </activity>
+        <activity
+            android:name=".views.activity.DetailList"
+            android:label="@string/title_activity_detail_list"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

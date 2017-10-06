@@ -2,8 +2,8 @@ package id.my.asmith.rizalapps.views.activity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,7 +17,7 @@ import id.my.asmith.rizalapps.R;
 import id.my.asmith.rizalapps.model.PostProduct;
 import id.my.asmith.rizalapps.model.Value;
 import id.my.asmith.rizalapps.network.interfaces.ProductInterface;
-import id.my.asmith.rizalapps.views.adapter.RecylcerviewProductAdapter;
+import id.my.asmith.rizalapps.views.adapter.ListProductAdapter;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -28,7 +28,7 @@ import static id.my.asmith.rizalapps.network.config.Config.BASE_URL;
 
 public class ListActivity extends AppCompatActivity {
     private List<PostProduct> results = new ArrayList<>();
-    private RecylcerviewProductAdapter viewAdapter;
+    private ListProductAdapter viewAdapter;
     private ProgressDialog mProgressdlg;
     @BindView(R.id.recycler_product)
     RecyclerView recyclerView;
@@ -40,7 +40,7 @@ public class ListActivity extends AppCompatActivity {
         getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
         mProgressdlg = new ProgressDialog(this);
         ButterKnife.bind(this);
-        viewAdapter = new RecylcerviewProductAdapter(this, results);
+        viewAdapter = new ListProductAdapter(this, results);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -71,7 +71,7 @@ public class ListActivity extends AppCompatActivity {
                 mProgressdlg.dismiss();
                 if (value.equals("1")) {
                     results = response.body().getResult();
-                    viewAdapter = new RecylcerviewProductAdapter(ListActivity.this, results);
+                    viewAdapter = new ListProductAdapter(ListActivity.this, results);
                     recyclerView.setAdapter(viewAdapter);
                 }
             }
