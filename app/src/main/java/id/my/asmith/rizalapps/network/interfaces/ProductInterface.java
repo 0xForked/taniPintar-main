@@ -43,7 +43,7 @@ public interface ProductInterface {
     @POST("/list_perkategori.php")
     Call<Value> category(@Field("kategori") String kategori);
 
-    //OnProgress
+
     @FormUrlEncoded
     @POST("/search_product.php")
     Call<Value> search(@Field("search") String search);

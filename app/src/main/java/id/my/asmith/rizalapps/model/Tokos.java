@@ -14,17 +14,19 @@ public class Tokos {
     public String uid;
     public String namaPemilik;
     public String emailPemilik;
+    public String lokasiToko;
 
     public Tokos (){
         // Default constructor required for calls to DataSnapshot.getValue(User.class)
     }
 
-    public Tokos(String namaToko, String nomorToko, String uid, String namaPemilik, String emailPemilik) {
+    public Tokos(String namaToko, String nomorToko, String uid, String namaPemilik, String emailPemilik, String lokasiToko) {
         this.namaToko = namaToko;
         this.nomorToko = nomorToko;
         this.uid = uid ;
         this.namaPemilik = namaPemilik;
         this.emailPemilik = emailPemilik;
+        this.lokasiToko = lokasiToko;
 
     }
 }

@@ -164,7 +164,7 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_search) {
-            Toast.makeText(MainActivity.this, "Search", Toast.LENGTH_LONG).show();
+            startActivity(new Intent(MainActivity.this, SearchActivity.class));
         }
 
         return super.onOptionsItemSelected(item);
