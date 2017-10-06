@@ -51,7 +51,7 @@ public class ProfileActivity extends AppCompatActivity {
     private EditText mEmail, mName, mBirth, mNumber;
     private Spinner mGender;
     private String[] SPINNERVALUES = {"Pria", "Wanita"};
-    private Button mBtnBirth, mBtnDone, mBtnToko, mBtnEditProfile;
+    private Button mBtnBirth, mBtnDone, mBtnCancel, mBtnToko, mBtnEditProfile;
     private TextView emailOut, nameOut, birthOut, numberOut, genderOut;
     private Uri mImageUri = null;
     private static final int DLG_ID = 0;
@@ -99,6 +99,15 @@ public class ProfileActivity extends AppCompatActivity {
             public void onClick(View view) {
                 mOutput.setVisibility(View.GONE);
                 mInput.setVisibility(View.VISIBLE);
+            }
+        });
+
+        mBtnCancel = (Button) findViewById(R.id.cancel_ud);
+        mBtnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mOutput.setVisibility(View.VISIBLE);
+                mInput.setVisibility(View.GONE);
             }
         });
 
