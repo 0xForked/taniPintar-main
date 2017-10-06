@@ -336,6 +336,7 @@ public class ProfileActivity extends AppCompatActivity {
 
                                         layout.addView(nama_toko);
                                         layout.addView(phone_toko);
+                                        layout.addView(lokasi_toko);
 
                                         alertDialogBuilder.setView(layout, 30, 0, 30, 0);
                                         // set positive button: Sing out
