@@ -311,14 +311,19 @@ public class ProfileActivity extends AppCompatActivity {
 
                                         final EditText nama_toko = new EditText(ProfileActivity.this);
                                         final EditText phone_toko = new EditText(ProfileActivity.this);
+                                        final EditText lokasi_toko = new EditText(ProfileActivity.this);
 
                                         nama_toko.setImeOptions(EditorInfo.IME_ACTION_NEXT);
                                         nama_toko.setHint("Market Name");
                                         nama_toko.setSingleLine(true);
 
-                                        phone_toko.setImeOptions(EditorInfo.IME_ACTION_DONE);
+                                        phone_toko.setImeOptions(EditorInfo.IME_ACTION_NEXT);
                                         phone_toko.setHint("Phone Number");
                                         phone_toko.setSingleLine(true);
+
+                                        lokasi_toko.setImeOptions(EditorInfo.IME_ACTION_DONE);
+                                        lokasi_toko.setHint("Kota/Desa Lokasi Toko");
+                                        lokasi_toko.setSingleLine(true);
 
                                         layout.addView(nama_toko);
                                         layout.addView(phone_toko);
@@ -334,6 +339,7 @@ public class ProfileActivity extends AppCompatActivity {
                                                 final String toko_phone = phone_toko.getText().toString().trim();
                                                 final String pemilik_nama = users.fullName;
                                                 final String pemilik_email = users.email;
+                                                final String lokasi_tokos = lokasi_toko.getText().toString().trim();
 
                                                 mProgressdlg.setMessage("Mengirim data . . .!");
                                                 mProgressdlg.setCancelable(false);
@@ -351,6 +357,7 @@ public class ProfileActivity extends AppCompatActivity {
                                                                     system.child("nomorToko").setValue(toko_phone);
                                                                     system.child("namaPemilik").setValue(pemilik_nama);
                                                                     system.child("emailPemilik").setValue(pemilik_email);
+                                                                    system.child("lokasiToko").setValue(lokasi_tokos);
                                                                     system.child("uid").setValue(userId);
 
                                                                     mProgressdlg.dismiss();
