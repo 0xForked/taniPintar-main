@@ -371,9 +371,7 @@ public class ProfileActivity extends AppCompatActivity {
                                                                     system.child("uid").setValue(userId);
 
                                                                     mProgressdlg.dismiss();
-                                                                    InputMethodManager imm = (InputMethodManager)
-                                                                            getSystemService(INPUT_METHOD_SERVICE);
-                                                                    imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+
                                                                     Toast.makeText(ProfileActivity.this, "Data berhasil dikirim!",
                                                                             Toast.LENGTH_SHORT).show();
                                                                     dialog.cancel();
