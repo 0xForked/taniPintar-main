@@ -30,6 +30,12 @@ public class PostProduct {
     @SerializedName("pic")
     @Expose
     private String pic;
+    @SerializedName("lat")
+    @Expose
+    private Double lat;
+    @SerializedName("lon")
+    @Expose
+    private Double lon;
 
     public Integer getProdukId() {
         return produkId;
@@ -87,4 +93,19 @@ public class PostProduct {
         this.pic = pic;
     }
 
+    public Double getLat() {
+        return lat;
+    }
+
+    public void setLat(Double lat) {
+        this.lat = lat;
+    }
+
+    public Double getLon() {
+        return lon;
+    }
+
+    public void setLon(Double lat) {
+        this.lon = lon;
+    }
 }

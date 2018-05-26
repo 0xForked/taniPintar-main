@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="id.my.asmith.rizalapps.views.activity.TokoActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/userPic"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_marginTop="20dp"
+                android:src="@mipmap/ic_launcher"
+                app:civ_border_color="@color/colorPrimary"
+                app:civ_border_width="1dp"
+                android:layout_centerHorizontal="true" />
+
+            <EditText
+                android:id="@+id/txtName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="18dp"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="18dp"
+                android:hint="Name"
+                android:layout_below="@+id/userPic" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtPhone"
+                android:hint="Phone"
+                android:layout_marginEnd="18dp"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/txtName"/>
+
+            <android.inputmethodservice.ExtractEditText
+                android:id="@+id/txtLocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="18dp"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="10dp"
+                android:hint="Location (e.g city/state)"
+                android:layout_below="@+id/txtPhone"/>
+
+            <RelativeLayout
+                android:layout_below="@+id/txtLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="20dp">
+                <FrameLayout
+                    android:id="@+id/map"
+                    android:name="com.google.android.gms.maps.SupportMapFragment"
+                    android:layout_width="200dp"
+                    android:layout_height="160dp" />
+                <Button
+                    android:id="@+id/btnUpdate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/map"
+                    android:text="Get Loc"
+                    android:layout_toEndOf="@+id/map" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/map"
+                    android:textSize="18sp"
+                    android:hint="Latitude"
+                    android:id="@+id/txtLat"
+                    android:textColor="@color/red"
+                    android:layout_below="@+id/btnUpdate"
+                    android:layout_toEndOf="@+id/map" />
+                <TextView
+                    android:id="@+id/txtLon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/map"
+                    android:textSize="18sp"
+                    android:hint="Logitude"
+                    android:textColor="@color/red"
+                    android:layout_below="@+id/txtLat"
+                    android:layout_toEndOf="@+id/map"/>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/map"
+                    android:text="BECOME A SELLER"/>
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+
+
+    </ScrollView>
+</android.support.constraint.ConstraintLayout>

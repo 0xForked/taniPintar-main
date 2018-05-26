@@ -25,6 +25,7 @@ import com.daimajia.slider.library.Animations.DescriptionAnimation;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.DefaultSliderView;
+import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -53,19 +54,19 @@ public class MainActivity extends AppCompatActivity
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
     public static final String[] TITLES= {"Terbaru","Free Ongkir","Grosir", "Eceran"};
-    public static final Integer[] IMAGES= {R.mipmap.ic_launcher,R.mipmap.ic_launcher,
-            R.mipmap.ic_launcher, R.mipmap.ic_launcher};
+    public static final Integer[] IMAGES= {R.mipmap.ic_stockbarang,R.mipmap.ic_free,
+            R.mipmap.ic_grosir, R.mipmap.ic_eceran};
 
     public static String[] gridViewStrings = {
-            "Beras", "Bawang Merah", "Bawang Putih", "Cabai", "Tomat", "Rempah", "Lain-Lain"
+            "Beras", "Gula", "Bawang merah", "Cabai", "Daging sapi", "Daging ayam","Minyak goreng"
 
 
     };
 
     public static int[] gridViewImages = {
-            R.mipmap.ic_launcher,R.mipmap.ic_launcher,R.mipmap.ic_launcher,
-            R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher,
-            R.mipmap.ic_launcher,
+            R.mipmap.ic_beras,R.mipmap.ic_gula,R.mipmap.ic_bawangmerah,
+            R.mipmap.ic_cabai, R.mipmap.ic_dagingsapi, R.mipmap.ic_dagingayam,
+            R.mipmap.ic_minyakgoreng,
     };
 
     @Override
@@ -86,11 +87,14 @@ public class MainActivity extends AppCompatActivity
         //Slider Iklan
         mSlider = (SliderLayout) findViewById(R.id.slider);
         HashMap<String, String> file_maps = new HashMap<String, String>();
-        file_maps.put("Discount", "https://seduhteh.files.wordpress.com/2015/07/discount.jpg");
-        file_maps.put("Sale", "http://bravob.net/wp-content/uploads/2016/07/Promo-dan-Diskon-Besar-Besaran-752x440.jpg");
+        file_maps.put("Discaunt","http://images1.prokal.co/websampit/files/berita/2015/09/05/petani-seruyan-mengaku-merugi.png");
+        file_maps.put("Sale","https://cdns.klimg.com/merdeka.com/i/w/news/2015/02/15/500194/670x335/kritik-pedas-cara-jokowi-jk-kejar-target-swasembada-pangan-3-tahun.jpg");
+        file_maps.put("Test","http://kabarhandayani.com/wp-content/uploads/2015/03/petani-panen-padi.jpg");
+        file_maps.put("asd","https://scontent.fupg2-1.fna.fbcdn.net/v/t1.0-9/33403287_634262163593272_6649652054828515328_n.jpg?_nc_cat=0&_nc_eui2=AeE1nwxRAVW3NINo9lQEZ5c7cmsLtemTEuR3SErLW83ZP7SutssyKhU84_FRicMgyydxyYIZ5xvP6zTGLobgOil4oY267fCtebkg8-XtylnxBgcO74fQoLpaI2Fb1O6Cj-o&oh=3c8e01608646b45386cda933a36f74bb&oe=5B79747D");
 
         for (String name : file_maps.keySet()) {
-            DefaultSliderView textSliderView = new DefaultSliderView(MainActivity.this);
+            ///DefaultSliderView textSliderView = new DefaultSliderView(MainActivity.this);
+            TextSliderView textSliderView = new TextSliderView(this);
             // initialize a SliderLayout
             textSliderView
                     .description(name)
@@ -322,14 +326,14 @@ public class MainActivity extends AppCompatActivity
 
                 if (position == 1) {
                     Intent i = new Intent(MainActivity.this, ListActivity.class);
-                    String kategori = "Bawang Merah";
+                    String kategori = "Gula";
                     i.putExtra("kategori", kategori);
                     startActivity(i);
                 }
 
                 if (position == 2) {
                     Intent i = new Intent(MainActivity.this, ListActivity.class);
-                    String kategori = "Bawang Putih";
+                    String kategori = "Bawang Merah";
                     i.putExtra("kategori", kategori);
                     startActivity(i);
                 }
@@ -343,21 +347,21 @@ public class MainActivity extends AppCompatActivity
 
                 if (position == 4) {
                     Intent i = new Intent(MainActivity.this, ListActivity.class);
-                    String kategori = "Tomat";
+                    String kategori = "Daging Sapi";
                     i.putExtra("kategori", kategori);
                     startActivity(i);
                 }
 
                 if (position == 5) {
                     Intent i = new Intent(MainActivity.this, ListActivity.class);
-                    String kategori = "Rempah";
+                    String kategori = "Daging Ayam";
                     i.putExtra("kategori", kategori);
                     startActivity(i);
                 }
 
                 if (position == 6) {
                     Intent i = new Intent(MainActivity.this, ListActivity.class);
-                    String kategori = "Lain-Lain";
+                    String kategori = "Minyak Goreng";
                     i.putExtra("kategori", kategori);
                     startActivity(i);
                 }

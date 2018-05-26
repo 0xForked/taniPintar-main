@@ -29,5 +29,7 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="Theme.AppCompat.Light.DarkActionBar"></style>
+
 
 </resources>

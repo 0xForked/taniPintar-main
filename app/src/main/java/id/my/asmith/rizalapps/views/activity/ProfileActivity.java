@@ -1,5 +1,6 @@
 package id.my.asmith.rizalapps.views.activity;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -60,6 +61,7 @@ public class ProfileActivity extends AppCompatActivity {
     private int year, month, day;
     private ProgressDialog mProgressdlg;
     RelativeLayout mOutput, mInput;
+    @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -307,122 +309,227 @@ public class ProfileActivity extends AppCompatActivity {
 
                             if(!users.toko) {
                                 mBtnToko.setOnClickListener(new View.OnClickListener() {
+                                    @SuppressLint("RestrictedApi")
                                     @Override
                                     public void onClick(View view) {
+                                        startActivity(new Intent(ProfileActivity.this, TokoActivity.class));
+//                                        final AlertDialog dialog = new AlertDialog.Builder(ProfileActivity.this)
+//                                                .setCancelable(false)
+//                                                .setTitle("Become a seller!")
+//                                                .setPositiveButton("Start Selling", null)
+//                                                .setNegativeButton("Set Location", null)
+//                                                .setNeutralButton("Cancel", null)
+//                                                .create();
+//
+//                                        LinearLayout layout = new LinearLayout(ProfileActivity.this);
+//                                        layout.setOrientation(LinearLayout.VERTICAL);
+//
+//                                        EditText nama_toko = new EditText(ProfileActivity.this);
+//                                        EditText phone_toko = new EditText(ProfileActivity.this);
+//                                        EditText lokasi_toko = new EditText(ProfileActivity.this);
+//                                        TextView txt_lat = new TextView(ProfileActivity.this);
+//                                        TextView txt_lon = new TextView(ProfileActivity.this);
+//                                        TextView txt_maps = new TextView(ProfileActivity.this);
+//
+//                                        nama_toko.setImeOptions(EditorInfo.IME_ACTION_NEXT);
+//                                        nama_toko.setHint("Market Name");
+//                                        nama_toko.setSingleLine(true);
+//
+//                                        phone_toko.setImeOptions(EditorInfo.IME_ACTION_NEXT);
+//                                        phone_toko.setHint("Phone Number");
+//                                        phone_toko.setSingleLine(true);
+//
+//                                        lokasi_toko.setImeOptions(EditorInfo.IME_ACTION_DONE);
+//                                        lokasi_toko.setHint("City/Village");
+//                                        lokasi_toko.setSingleLine(true);
+//
+//                                        txt_lat.setHint("Latitude");
+//                                        txt_lon.setHint("Longitude");
+//                                        txt_maps.setHint("Tap 'set location' to get lat and lon via GMaps");
+//                                        txt_maps.setTextColor(getResources().getColor(R.color.colorAccent));
+//
+//                                        txt_lat.setVisibility(View.GONE);
+//                                        txt_lon.setVisibility(View.GONE);
+//
+//                                        layout.addView(nama_toko);
+//                                        layout.addView(phone_toko);
+//                                        layout.addView(lokasi_toko);
+//                                        layout.addView(txt_lat);
+//                                        layout.addView(txt_lon);
+//                                        layout.addView(txt_maps);
+//
+//                                        dialog.setView(layout, 30, 0, 30, 0);
+//
+//                                        dialog.setOnShowListener(new DialogInterface.OnShowListener() {
+//                                            @Override
+//                                            public void onShow(final DialogInterface dialog) {
+//
+//
+//                                                Button btnSeller = ((AlertDialog) dialog).getButton(AlertDialog.BUTTON_POSITIVE);
+//                                                btnSeller.setOnClickListener(new View.OnClickListener() {
+//                                                    @Override
+//                                                    public void onClick(View v) {
+//
+//                                                    }
+//                                                });
+//                                                Button btnLocation = ((AlertDialog) dialog).getButton(AlertDialog.BUTTON_NEGATIVE);
+//                                                btnLocation.setOnClickListener(new View.OnClickListener() {
+//                                                    @Override
+//                                                    public void onClick(View v) {
+//
+//                                                    }
+//                                                });
+//                                                Button btnCancel = ((AlertDialog) dialog).getButton(AlertDialog.BUTTON_NEUTRAL);
+//                                                btnCancel.setOnClickListener(new View.OnClickListener() {
+//                                                    @Override
+//                                                    public void onClick(View v) {
+//                                                        dialog.dismiss();
+//                                                    }
+//                                                });
+//                                            }
+//                                        });
+//
+//                                        dialog.show();
+//
                                         //Showing AlertDialog after clicking Button
-                                        final AlertDialog.Builder alertDialogBuilder =
-                                                new AlertDialog.Builder(ProfileActivity.this);
-                                        alertDialogBuilder.setTitle("Become a seller!");
-                                        alertDialogBuilder.setIcon(R.mipmap.ic_launcher);
-                                        alertDialogBuilder.setCancelable(false);
-                                        LinearLayout layout = new LinearLayout(ProfileActivity.this);
-                                        layout.setOrientation(LinearLayout.VERTICAL);
-
-                                        final EditText nama_toko = new EditText(ProfileActivity.this);
-                                        final EditText phone_toko = new EditText(ProfileActivity.this);
-                                        final EditText lokasi_toko = new EditText(ProfileActivity.this);
-
-                                        nama_toko.setImeOptions(EditorInfo.IME_ACTION_NEXT);
-                                        nama_toko.setHint("Market Name");
-                                        nama_toko.setSingleLine(true);
-
-                                        phone_toko.setImeOptions(EditorInfo.IME_ACTION_NEXT);
-                                        phone_toko.setHint("Phone Number");
-                                        phone_toko.setSingleLine(true);
-
-                                        lokasi_toko.setImeOptions(EditorInfo.IME_ACTION_DONE);
-                                        lokasi_toko.setHint("Kota/Desa Lokasi Toko");
-                                        lokasi_toko.setSingleLine(true);
-
-                                        layout.addView(nama_toko);
-                                        layout.addView(phone_toko);
-                                        layout.addView(lokasi_toko);
-
-                                        alertDialogBuilder.setView(layout, 30, 0, 30, 0);
-                                        // set positive button: Sing out
-                                        alertDialogBuilder.setPositiveButton("Start Selling",new DialogInterface.OnClickListener() {
-                                            public void onClick(final DialogInterface dialog, int id) {
-                                                // go to a new activity of the app
-                                                // onClickEvent to sing out
-                                                final String userId = getUid();
-                                                final String toko_nama = nama_toko.getText().toString().trim();
-                                                final String toko_phone = phone_toko.getText().toString().trim();
-                                                final String pemilik_nama = users.fullName;
-                                                final String pemilik_email = users.email;
-                                                final String lokasi_tokos = lokasi_toko.getText().toString().trim();
-
-                                                mProgressdlg.setMessage("Mengirim data . . .!");
-                                                mProgressdlg.setCancelable(false);
-                                                mProgressdlg.show();
-                                                mDatabase.child("users").child(userId).addListenerForSingleValueEvent(
-                                                        new ValueEventListener() {
-                                                            @Override
-                                                            public void onDataChange(DataSnapshot dataSnapshot) {
-                                                                if (!TextUtils.isEmpty(toko_nama) &&
-                                                                        !TextUtils.isEmpty(toko_phone)) {
-
-                                                                    DatabaseReference system = mDatabase.child("tokos/"+userId);
-
-                                                                    system.child("namaToko").setValue(toko_nama);
-                                                                    system.child("nomorToko").setValue(toko_phone);
-                                                                    system.child("namaPemilik").setValue(pemilik_nama);
-                                                                    system.child("emailPemilik").setValue(pemilik_email);
-                                                                    system.child("lokasiToko").setValue(lokasi_tokos);
-                                                                    system.child("uid").setValue(userId);
-
-                                                                    mProgressdlg.dismiss();
-
-                                                                    Toast.makeText(ProfileActivity.this, "Data berhasil dikirim!",
-                                                                            Toast.LENGTH_SHORT).show();
-                                                                    dialog.cancel();
-
-                                                                    Intent refresh = new Intent(ProfileActivity.this, ProfileActivity.class);
-                                                                    startActivity(refresh);//Start the same Activity
-                                                                    finish(); //finish Activity.
-
-                                                                    mDatabase.child("users").child(userId).addListenerForSingleValueEvent(
-                                                                            new ValueEventListener() {
-                                                                                @Override
-                                                                            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                                                                                DatabaseReference system = mDatabase.child("users/"+userId);
-                                                                                system.child("toko").setValue(true);
-                                                                            }
-
-                                                                            @Override
-                                                                            public void onCancelled(DatabaseError databaseError) {
-                                                                                Log.w("send", "loadPost:onCancelled", databaseError.toException());
-                                                                            }
-                                                                    });
-
-                                                                } else {
-                                                                    mProgressdlg.dismiss();
-                                                                    Toast.makeText(ProfileActivity.this, "Tidak boleh ada yang kosong!",
-                                                                            Toast.LENGTH_SHORT).show();
-                                                                }
-                                                            }
-
-                                                            @Override
-                                                            public void onCancelled(DatabaseError databaseError) {
-                                                                Log.w("send", "loadPost:onCancelled", databaseError.toException());
-                                                            }
-                                                });
-
-                                            }
-                                        });
-                                        // set negative button: Cancel
-                                        alertDialogBuilder.setNegativeButton("Cancel",new DialogInterface.OnClickListener() {
-                                            public void onClick(DialogInterface dialog, int id) {
-                                                // cancel the alert box and put a Toast to the user
-                                                dialog.cancel();
-                                                // notify to user hes press the cancel button
-                                                Toast.makeText(ProfileActivity.this, "Canceled",
-                                                        Toast.LENGTH_LONG).show();
-                                            }
-                                        });
-                                        AlertDialog alertDialog = alertDialogBuilder.create();
-                                        // show alert
-                                        alertDialog.show();
+//                                        final AlertDialog.Builder alertDialogBuilder =
+//                                                new AlertDialog.Builder(ProfileActivity.this);
+//                                        alertDialogBuilder.setTitle("Become a seller!");
+//                                        alertDialogBuilder.setIcon(R.mipmap.ic_launcher);
+//                                        alertDialogBuilder.setCancelable(false);
+//                                        LinearLayout layout = new LinearLayout(ProfileActivity.this);
+//                                        layout.setOrientation(LinearLayout.VERTICAL);
+//
+//                                        final EditText nama_toko = new EditText(ProfileActivity.this);
+//                                        final EditText phone_toko = new EditText(ProfileActivity.this);
+//                                        final EditText lokasi_toko = new EditText(ProfileActivity.this);
+//                                        final EditText lat_toko = new EditText(ProfileActivity.this);
+//                                        final EditText lon_toko = new EditText(ProfileActivity.this);
+//
+//                                        nama_toko.setImeOptions(EditorInfo.IME_ACTION_NEXT);
+//                                        nama_toko.setHint("Market Name");
+//                                        nama_toko.setSingleLine(true);
+//
+//                                        phone_toko.setImeOptions(EditorInfo.IME_ACTION_NEXT);
+//                                        phone_toko.setHint("Phone Number");
+//                                        phone_toko.setSingleLine(true);
+//
+//                                        lokasi_toko.setImeOptions(EditorInfo.IME_ACTION_DONE);
+//                                        lokasi_toko.setHint("Kota/Desa Lokasi Toko");
+//                                        lokasi_toko.setSingleLine(true);
+//
+//                                        lat_toko.setImeOptions(EditorInfo.IME_ACTION_DONE);
+//                                        lat_toko.setHint("Latitude");
+//                                        lat_toko.setSingleLine(true);
+//
+//                                        lon_toko.setImeOptions(EditorInfo.IME_ACTION_DONE);
+//                                        lon_toko.setHint("Longitude");
+//                                        lon_toko.setSingleLine(true);
+//
+//                                        layout.addView(nama_toko);
+//                                        layout.addView(phone_toko);
+//                                        layout.addView(lokasi_toko);
+//                                        layout.addView(lat_toko);
+//                                        layout.addView(lon_toko);
+//
+//                                        alertDialogBuilder.setView(layout, 30, 0, 30, 0);
+//                                        // set positive button: Sing out
+//                                        alertDialogBuilder.setPositiveButton("Start Selling",new DialogInterface.OnClickListener() {
+//                                            public void onClick(final DialogInterface dialog, int id) {
+//                                                // go to a new activity of the app
+//                                                // onClickEvent to sing out
+//                                                final String userId = getUid();
+//                                                final String toko_nama = nama_toko.getText().toString().trim();
+//                                                final String toko_phone = phone_toko.getText().toString().trim();
+//                                                final String pemilik_nama = users.fullName;
+//                                                final String pemilik_email = users.email;
+//                                                final String lokasi_tokos = lokasi_toko.getText().toString().trim();
+//
+//                                                mProgressdlg.setMessage("Mengirim data . . .!");
+//                                                mProgressdlg.setCancelable(false);
+//                                                mProgressdlg.show();
+//                                                mDatabase.child("users").child(userId).addListenerForSingleValueEvent(
+//                                                        new ValueEventListener() {
+//                                                            @Override
+//                                                            public void onDataChange(DataSnapshot dataSnapshot) {
+//                                                                if (!TextUtils.isEmpty(toko_nama) &&
+//                                                                        !TextUtils.isEmpty(toko_phone)) {
+//
+//                                                                    DatabaseReference system = mDatabase.child("tokos/"+userId);
+//
+//                                                                    system.child("namaToko").setValue(toko_nama);
+//                                                                    system.child("nomorToko").setValue(toko_phone);
+//                                                                    system.child("namaPemilik").setValue(pemilik_nama);
+//                                                                    system.child("emailPemilik").setValue(pemilik_email);
+//                                                                    system.child("lokasiToko").setValue(lokasi_tokos);
+//                                                                    system.child("uid").setValue(userId);
+//
+//                                                                    mProgressdlg.dismiss();
+//
+//                                                                    Toast.makeText(ProfileActivity.this, "Data berhasil dikirim!",
+//                                                                            Toast.LENGTH_SHORT).show();
+//                                                                    dialog.cancel();
+//
+//                                                                    Intent refresh = new Intent(ProfileActivity.this, ProfileActivity.class);
+//                                                                    startActivity(refresh);//Start the same Activity
+//                                                                    finish(); //finish Activity.
+//
+//                                                                    mDatabase.child("users").child(userId).addListenerForSingleValueEvent(
+//                                                                            new ValueEventListener() {
+//                                                                                @Override
+//                                                                            public void onDataChange(DataSnapshot dataSnapshot) {
+//
+//                                                                                DatabaseReference system = mDatabase.child("users/"+userId);
+//                                                                                system.child("toko").setValue(true);
+//                                                                            }
+//
+//                                                                            @Override
+//                                                                            public void onCancelled(DatabaseError databaseError) {
+//                                                                                Log.w("send", "loadPost:onCancelled", databaseError.toException());
+//                                                                            }
+//                                                                    });
+//
+//                                                                } else {
+//                                                                    mProgressdlg.dismiss();
+//                                                                    Toast.makeText(ProfileActivity.this, "Tidak boleh ada yang kosong!",
+//                                                                            Toast.LENGTH_SHORT).show();
+//                                                                }
+//                                                            }
+//
+//                                                            @Override
+//                                                            public void onCancelled(DatabaseError databaseError) {
+//                                                                Log.w("send", "loadPost:onCancelled", databaseError.toException());
+//                                                            }
+//                                                });
+//
+//                                            }
+//                                        });
+//                                        // set negative button: Cancel
+//                                        alertDialogBuilder.setNegativeButton("Cancel",new DialogInterface.OnClickListener() {
+//                                            public void onClick(DialogInterface dialog, int id) {
+//                                                // cancel the alert box and put a Toast to the user
+//                                                dialog.cancel();
+//                                                // notify to user hes press the cancel button
+//                                                Toast.makeText(ProfileActivity.this, "Canceled",
+//                                                        Toast.LENGTH_LONG).show();
+//                                            }
+//                                        });
+//
+//                                        alertDialogBuilder.setNeutralButton("Get Place", new DialogInterface.OnClickListener() {
+//                                            @Override
+//                                            public void onClick(DialogInterface dialog, int which) {
+//                                                mProgressdlg.setMessage("Sending data...");
+//                                                mProgressdlg.setCancelable(false);
+//                                                mProgressdlg.show();
+//                                                int data = 1;
+//                                                if (data == 0) {
+//                                                    mProgressdlg.dismiss();
+//                                                }
+//                                            }
+//                                        });
+//                                        AlertDialog alertDialog = alertDialogBuilder.create();
+//                                        // show alert
+//                                        alertDialog.show();
                                     }
                                 });
 

@@ -13,7 +13,7 @@
     <ImageView
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:src="@mipmap/ic_launcher"
+        android:src="@mipmap/ic_logo_tani2"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp"/>
 

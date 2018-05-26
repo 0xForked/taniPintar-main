@@ -1,5 +1,6 @@
 package id.my.asmith.rizalapps.views.activity;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -26,16 +27,19 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import id.my.asmith.rizalapps.R;
 import id.my.asmith.rizalapps.model.Value;
-import id.my.asmith.rizalapps.network.interfaces.ProductInterface;
+import id.my.asmith.rizalapps.network.ApiClient;
+import id.my.asmith.rizalapps.network.ApiService;
+import id.my.asmith.rizalapps.views.adapter.ListProductAdapter;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import static id.my.asmith.rizalapps.network.config.Config.BASE_URL;
+import static id.my.asmith.rizalapps.network.Const.BASE_URL;
 
 public class DetailStore extends AppCompatActivity {
+    ApiClient mApiClient = new ApiClient();
     @BindView(R.id.picProductUpdate)ImageView picUpdate;
     @BindView(R.id.nameProductUpdate) EditText nameUpdate;
     @BindView(R.id.categoryProductUpdate) Spinner kategoriUpdate;
@@ -44,7 +48,7 @@ public class DetailStore extends AppCompatActivity {
     @BindView(R.id.updateProduct) Button update;
     @BindView(R.id.deleteProduct) Button delete;
     private String[] SPINNERVALUES = {"Beras", "Bawang Merah", "Bawang Putih", "Cabai", "Tomat",
-            "Rempah", "Lain-Lain"};
+            "Rempah","cingkeh", "Lain-Lain"};
     private static final int GALLERY_REQ = 1;
     private Uri mImageUri = null;
     private ProgressDialog mProgressdlg;
@@ -68,31 +72,29 @@ public class DetailStore extends AppCompatActivity {
 
                         Intent intent = getIntent();
                         String produkid = intent.getStringExtra("produkid");
-                        Retrofit retrofit = new Retrofit.Builder()
-                                .baseUrl(BASE_URL)
-                                .addConverterFactory(GsonConverterFactory.create())
-                                .build();
-                        ProductInterface api = retrofit.create(ProductInterface.class);
-                        Call<Value> call = api.delete(produkid);
-                        call.enqueue(new Callback<Value>() {
-                            @Override
-                            public void onResponse(Call<Value> call, Response<Value> response) {
-                                String value = response.body().getValue();
-                                String message = response.body().getMessage();
-                                if (value.equals("1")) {
-                                    Toast.makeText(DetailStore.this, message, Toast.LENGTH_SHORT).show();
-                                    finish();
-                                } else {
-                                    Toast.makeText(DetailStore.this, message, Toast.LENGTH_SHORT).show();
-                                }
-                            }
 
-                            @Override
-                            public void onFailure(Call<Value> call, Throwable t) {
-                                t.printStackTrace();
-                                Toast.makeText(DetailStore.this, "Jaringan Error!", Toast.LENGTH_SHORT).show();
-                            }
-                        });
+                        mApiClient
+                                .ApiServices()
+                                .productDelete(Integer.parseInt(produkid))
+                                .enqueue(new Callback<Value>() {
+                                    @Override
+                                    public void onResponse(Call<Value> call, Response<Value> response) {
+                                        String value = response.body().getValue();
+                                        String message = response.body().getMessage();
+                                        if (value.equals("1")) {
+                                            Toast.makeText(DetailStore.this, message, Toast.LENGTH_SHORT).show();
+                                            finish();
+                                        } else {
+                                            Toast.makeText(DetailStore.this, message, Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<Value> call, Throwable t) {
+                                        t.printStackTrace();
+                                        Toast.makeText(DetailStore.this, "Jaringan Error!", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
                     }
                 })
                 .setNegativeButton("Batal",new DialogInterface.OnClickListener() {
@@ -125,13 +127,17 @@ public class DetailStore extends AppCompatActivity {
                 String keterangan = aboutUpdate.getText().toString();
                 Intent intent = getIntent();
                 String produkid = intent.getStringExtra("produkid");
-
+                Double lat = 1.222;
+                Double lon = 124.123;
                 Retrofit retrofit = new Retrofit.Builder()
                         .baseUrl(BASE_URL)
                         .addConverterFactory(GsonConverterFactory.create())
                         .build();
-                ProductInterface api = retrofit.create(ProductInterface.class);
-                Call<Value> call = api.update(produkid, nama, kategori, haraga, keterangan, downloadUrl.toString());
+                ApiService api = retrofit.create(ApiService.class);
+                Call<Value> call = api.productUpdate(
+                        Integer.parseInt(produkid), nama,
+                        kategori, haraga, keterangan,
+                        downloadUrl.toString(), lat, lon);
                 call.enqueue(new Callback<Value>() {
                     @Override
                     public void onResponse(Call<Value> call, Response<Value> response) {
@@ -162,6 +168,7 @@ public class DetailStore extends AppCompatActivity {
 
     }
 
+    @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

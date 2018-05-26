@@ -1,5 +1,6 @@
 package id.my.asmith.rizalapps.views.activity;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
@@ -42,7 +43,9 @@ import id.my.asmith.rizalapps.R;
 import id.my.asmith.rizalapps.model.PostProduct;
 import id.my.asmith.rizalapps.model.Tokos;
 import id.my.asmith.rizalapps.model.Value;
-import id.my.asmith.rizalapps.network.interfaces.ProductInterface;
+import id.my.asmith.rizalapps.network.ApiClient;
+import id.my.asmith.rizalapps.network.ApiService;
+import id.my.asmith.rizalapps.views.adapter.ListProductAdapter;
 import id.my.asmith.rizalapps.views.adapter.RecylcerviewProductAdapter;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -50,10 +53,10 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import static id.my.asmith.rizalapps.network.config.Config.BASE_URL;
+import static id.my.asmith.rizalapps.network.Const.BASE_URL;
 
 public class StoreActivity extends AppCompatActivity {
-
+    ApiClient mApiClient = new ApiClient();
     private TextView namaToko, phoneToko, namaPemilik, emailPemilik;
     private DatabaseReference mDatabase;
     private StorageReference mStorage;
@@ -62,8 +65,8 @@ public class StoreActivity extends AppCompatActivity {
     private EditText edName, edPrice, edAbout;
     private ImageView imgProduct;
     private Spinner spCategory;
-    private String[] SPINNERVALUES = {"Beras", "Bawang Merah", "Bawang Putih", "Cabai", "Tomat",
-            "Rempah", "Lain-Lain"};
+    private String[] SPINNERVALUES = {"Beras", "Gula", "Bawang Merah", "Cabai", "Daging Sapi",
+            "Daging Ayam", "Minyak Goreng"};
     private static final String REQUIRED = "Required";
     private ProgressDialog mProgressdlg;
     private static final int GALLERY_REQ = 1;
@@ -75,6 +78,7 @@ public class StoreActivity extends AppCompatActivity {
     @BindView(R.id.recycler_tokos)
     RecyclerView recyclerView;
 
+    @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -174,29 +178,27 @@ public class StoreActivity extends AppCompatActivity {
         mProgressdlg.setCancelable(false);
         mProgressdlg.show();
         final String Uid = getUid();
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        ProductInterface api = retrofit.create(ProductInterface.class);
-        Call<Value> call = api.tokos(Uid);
-        call.enqueue(new Callback<Value>() {
-            @Override
-            public void onResponse(Call<Value> call, Response<Value> response) {
-                String value = response.body().getValue();
-                mProgressdlg.dismiss();
-                if (value.equals("1")) {
-                    results = response.body().getResult();
-                    viewAdapter = new RecylcerviewProductAdapter(StoreActivity.this, results);
-                    recyclerView.setAdapter(viewAdapter);
-                }
-            }
 
-            @Override
-            public void onFailure(Call<Value> call, Throwable t) {
-                mProgressdlg.dismiss();
-            }
-        });
+        mApiClient
+                .ApiServices()
+                .getData(null, null, Uid)
+                .enqueue(new Callback<Value>() {
+                    @Override
+                    public void onResponse(Call<Value> call, Response<Value> response) {
+                        String value = response.body().getValue();
+                        mProgressdlg.dismiss();
+                        if (value.equals("1")) {
+                            results = response.body().getResult();
+                            viewAdapter = new RecylcerviewProductAdapter(StoreActivity.this, results);
+                            recyclerView.setAdapter(viewAdapter);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<Value> call, Throwable t) {
+                        mProgressdlg.dismiss();
+                    }
+                });
     }
 
 
@@ -211,7 +213,6 @@ public class StoreActivity extends AppCompatActivity {
         }
     }
 
-
     private void startInput() {
 
         final String nameProduct = edName.getText().toString().trim();
@@ -219,6 +220,8 @@ public class StoreActivity extends AppCompatActivity {
         final String aboutProduct = edAbout.getText().toString().trim();
         final String categoryProduct = spCategory.getSelectedItem().toString();
         final String userId = getUid();
+        final Double lat = 1.222;
+        final Double lon = 123.222;
         // All is required
         if (TextUtils.isEmpty(nameProduct)) {
             edName.setError(REQUIRED);
@@ -250,9 +253,9 @@ public class StoreActivity extends AppCompatActivity {
                             .baseUrl(BASE_URL)
                             .addConverterFactory(GsonConverterFactory.create())
                             .build();
-                    ProductInterface api = retrofit.create(ProductInterface.class);
-                    Call<Value> call = api.product(userId, nameProduct, categoryProduct,
-                            priceProduct, aboutProduct, downloadUrl.toString() );
+                    ApiService api = retrofit.create(ApiService.class);
+                    Call<Value> call = api.productSave(userId, nameProduct, categoryProduct,
+                            priceProduct, aboutProduct, downloadUrl.toString(), lat, lon );
                     call.enqueue(new Callback<Value>() {
                         @Override
                         public void onResponse(Call<Value> call, Response<Value> response) {
