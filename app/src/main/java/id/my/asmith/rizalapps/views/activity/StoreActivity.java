@@ -33,6 +33,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,9 +62,9 @@ public class StoreActivity extends AppCompatActivity {
     private DatabaseReference mDatabase;
     private StorageReference mStorage;
     private RelativeLayout inputProduct, listProduct;
-    private Button btnCreate, btnCancel;
+    private Button btnCreate, btnCancel, btnMaps, btnUpdate;
     private EditText edName, edPrice, edAbout;
-    private ImageView imgProduct;
+    private ImageView imgProduct, imgToko;
     private Spinner spCategory;
     private String[] SPINNERVALUES = {"Beras", "Gula", "Bawang Merah", "Cabai", "Daging Sapi",
             "Daging Ayam", "Minyak Goreng"};
@@ -93,6 +94,7 @@ public class StoreActivity extends AppCompatActivity {
         emailPemilik = (TextView) findViewById(R.id.email_pemili);
         inputProduct = (RelativeLayout) findViewById(R.id.produkInput);
         mProgressdlg = new ProgressDialog(this);
+        imgToko = (ImageView) findViewById(R.id.images_toko);
         imgProduct = (ImageView) findViewById(R.id.picProduct);
         edName = (EditText) findViewById(R.id.nameProduct);
         edPrice = (EditText) findViewById(R.id.priceProduct);
@@ -106,7 +108,7 @@ public class StoreActivity extends AppCompatActivity {
         });
         listProduct = (RelativeLayout) findViewById(R.id.produkList) ;
         btnCancel =(Button) findViewById(R.id.cancels);
-
+        btnMaps = (Button) findViewById(R.id.showLocs);
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -162,6 +164,14 @@ public class StoreActivity extends AppCompatActivity {
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 // TODO Auto-generated method stub
+            }
+        });
+
+        btnUpdate = (Button) findViewById(R.id.updateToko);
+        btnUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(StoreActivity.this, TokoActivity.class));
             }
         });
     }
@@ -316,6 +326,22 @@ public class StoreActivity extends AppCompatActivity {
                         phoneToko.setText(toko.nomorToko);
                         namaPemilik.setText(toko.namaPemilik);
                         emailPemilik.setText(toko.emailPemilik);
+
+                        Picasso.with(StoreActivity.this)
+                                .load(toko.pic)
+                                .placeholder(R.mipmap.ic_launcher)
+                                .error(R.drawable.ic_broken_image)
+                                .into(imgToko);
+
+                        btnMaps.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                String status = "getPosition";
+                                String latitude = toko.lat;
+                                String longitude = toko.lon;
+                                MapsActivity.start(StoreActivity.this, status, latitude, longitude);
+                            }
+                        });
                     }
 
                     @Override

@@ -24,13 +24,13 @@
 
             <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="130dp"
                 android:padding="5dp">
                 <ImageView
                     android:layout_width="100dp"
                     android:layout_height="80dp"
                     android:id="@+id/imgTK"
-                    android:layout_centerVertical="true"
+
                     android:src="@mipmap/ic_launcher"/>
                 <TableLayout
                     android:layout_width="match_parent"
@@ -103,6 +103,25 @@
                     </TableRow>
 
                 </TableLayout>
+                <Button
+                    android:text="Chat Penjual"
+                    android:textAllCaps="false"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:id="@+id/chatPenjual"
+                    android:layout_toLeftOf="@+id/showLocsDetail"
+                     />
+
+                <Button
+                    android:text="Show Location"
+                    android:textAllCaps="false"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:id="@+id/showLocsDetail"
+                    android:layout_alignParentRight="true" />
 
             </RelativeLayout>
 

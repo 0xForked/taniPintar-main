@@ -1,5 +1,6 @@
 package id.my.asmith.rizalapps.views.activity;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -124,8 +125,9 @@ public class LoginActivity extends AppCompatActivity {
                                     if (password.length() < 6) {
                                         TXTPassword.setError(getString(R.string.error_message_min_pwd));
                                     } else {
+                                        // + "Message : " +task.getException().getMessage()
                                         Toast.makeText(LoginActivity.this,
-                                                getString(R.string.error_message_mAuth_fail),
+                                                getString(R.string.error_message_mAuth_fail) ,
                                                 Toast.LENGTH_LONG).show();
                                     }
                                 } else {
@@ -162,6 +164,7 @@ public class LoginActivity extends AppCompatActivity {
         String htmlString="<u>Forgot Password?</u>";
         forgotPassword.setText(Html.fromHtml(htmlString));
         forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("RestrictedApi")
             @Override
             public void onClick(View view) {
                     final AlertDialog.Builder alertDialogBuilder =

@@ -9,8 +9,10 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -33,6 +35,8 @@ public class DetailList extends AppCompatActivity {
     @BindView(R.id.textNamaTK) TextView textViewNamaToko;
     @BindView(R.id.textAlamatTK) TextView textViewLokasiToko;
     @BindView(R.id.textPonselTK) TextView textViewPonselToko;
+    @BindView(R.id.showLocsDetail) Button btnMaps;
+    @BindView(R.id.imgTK) ImageView imgTK;
     private DatabaseReference mDatabase;
 
     @Override
@@ -77,6 +81,27 @@ public class DetailList extends AppCompatActivity {
                         textViewLokasiToko.setText(toko.lokasiToko);
                         textViewPonselToko.setText(toko.nomorToko);
 
+                        Picasso.with(DetailList.this)
+                                .load(toko.pic)
+                                .placeholder(R.mipmap.ic_launcher)
+                                .error(R.drawable.ic_broken_image)
+                                .into(imgTK);
+
+                        btnMaps.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                String status = "getPosition";
+                                String latitude = toko.lat;
+                                String longitude = toko.lon;
+
+                                if (latitude != null && longitude != null ) {
+                                    MapsActivity.start(DetailList.this, status, latitude, longitude);
+                                } else {
+                                    Toast.makeText(DetailList.this, "Lokasi toko tidak ditemukan", Toast.LENGTH_LONG).show();
+                                }
+
+                            }
+                        });
                     }
 
                     @Override

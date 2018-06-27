@@ -27,77 +27,85 @@
                 android:layout_centerHorizontal="true" />
 
             <EditText
-                android:id="@+id/txtName"
+                android:id="@+id/txtNameToko"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="18dp"
                 android:layout_marginStart="18dp"
                 android:layout_marginTop="18dp"
+                android:imeOptions="actionNext"
+                android:singleLine="true"
                 android:hint="Name"
                 android:layout_below="@+id/userPic" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/txtPhone"
+                android:id="@+id/txtPhoneToko"
                 android:hint="Phone"
+                android:singleLine="true"
+                android:imeOptions="actionNext"
                 android:layout_marginEnd="18dp"
                 android:layout_marginStart="18dp"
                 android:layout_marginTop="10dp"
-                android:layout_below="@id/txtName"/>
+                android:layout_below="@id/txtNameToko"/>
 
-            <android.inputmethodservice.ExtractEditText
-                android:id="@+id/txtLocation"
+            <EditText
+                android:id="@+id/txtLocationToko"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="18dp"
                 android:layout_marginStart="18dp"
+                android:singleLine="true"
                 android:layout_marginTop="10dp"
+                android:imeOptions="actionDone"
                 android:hint="Location (e.g city/state)"
-                android:layout_below="@+id/txtPhone"/>
+                android:layout_below="@+id/txtPhoneToko"/>
 
             <RelativeLayout
-                android:layout_below="@+id/txtLocation"
+                android:layout_below="@+id/txtLocationToko"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="20dp">
-                <FrameLayout
-                    android:id="@+id/map"
-                    android:name="com.google.android.gms.maps.SupportMapFragment"
-                    android:layout_width="200dp"
-                    android:layout_height="160dp" />
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/maps"
+                    android:id="@+id/map_toko"/>
                 <Button
-                    android:id="@+id/btnUpdate"
+                    android:id="@+id/btnAutoLoc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/map"
-                    android:text="Get Loc"
-                    android:layout_toEndOf="@+id/map" />
+                    android:layout_toRightOf="@+id/map_toko"
+                    android:text="Auto Get Location"
+                    android:textAllCaps="false"
+                    android:layout_toEndOf="@+id/map_toko" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/map"
+                    android:layout_toRightOf="@+id/map_toko"
                     android:textSize="18sp"
                     android:hint="Latitude"
-                    android:id="@+id/txtLat"
+                    android:id="@+id/txtLatToko"
                     android:textColor="@color/red"
-                    android:layout_below="@+id/btnUpdate"
-                    android:layout_toEndOf="@+id/map" />
+                    android:layout_below="@+id/btnAutoLoc"
+                    android:layout_toEndOf="@+id/map_toko" />
                 <TextView
-                    android:id="@+id/txtLon"
+                    android:id="@+id/txtLonToko"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/map"
+                    android:layout_toRightOf="@+id/map_toko"
                     android:textSize="18sp"
                     android:hint="Logitude"
                     android:textColor="@color/red"
-                    android:layout_below="@+id/txtLat"
-                    android:layout_toEndOf="@+id/map"/>
+                    android:layout_below="@+id/txtLatToko"
+                    android:layout_toEndOf="@+id/map_toko"/>
 
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/map"
+                    android:layout_below="@id/map_toko"
+                    android:id="@+id/btnSellersToko"
                     android:text="BECOME A SELLER"/>
             </RelativeLayout>
 

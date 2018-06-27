@@ -1,5 +1,6 @@
 package id.my.asmith.rizalapps.views.activity;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -38,6 +39,7 @@ public class RegisterActivity extends AppCompatActivity {
         context.startActivity(intent);
     }
 
+    @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
